@@ -2,12 +2,11 @@
 
 "I'm thinking of a number between 1 and 100..." println
 
-rand := Random value(100) floor
-rand println
+rand := Random value(100) floor + 1
 
 stdio := File standardInput
 
-"What number am I thiking of?" println
+"What number am I thinking of?" println
 
 delta := 100
 oldInput := 100
