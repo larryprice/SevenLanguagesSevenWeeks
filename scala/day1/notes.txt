@@ -1,0 +1,5 @@
+Scala API: http://www.scala-lang.org/api/current/index.html#package
+
+I'm Feeling Lucky for "Scala vs Java": http://www.infoq.com/articles/scala-java-myths-facts
+
+Discussion of val vs var: http://stackoverflow.com/questions/1791408/what-is-the-difference-between-a-var-and-val-definition-in-scala
