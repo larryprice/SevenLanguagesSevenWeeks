@@ -18,15 +18,15 @@ class Board {
   }
 
   def spots_filled():Int = {
-    board.filter(x => x == "X" || x == "O").size
+    board.count(x => x == "X" || x == "O")
   }
 
   private def is_valid():Boolean = {
     if (board.size != 9) {
       false
     } else {
-      val num_x = board.filter(x => x == "X").size
-      val num_o = board.filter(x => x == "O").size
+      val num_x = board.count(x => x == "X")
+      val num_o = board.count(x => x == "O")
       (num_x == num_o) || (num_x == (num_o + 1))
     }
   }
