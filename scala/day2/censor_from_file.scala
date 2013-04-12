@@ -1,9 +1,22 @@
+import scala.collection.mutable.HashMap
+import scala.io.Source
+
 class Person
 
 trait Censor {
-  val curses = Map("Shoot" -> "Pucky", "Darn" -> "Beans")
+  val curses = new HashMap[String, String]
+  load_curses
   def censor(words: String) = {
     words.split(" ").map(word => if (curses.contains(word)) curses(word) else word).mkString(""," ", "")
+  }
+
+  def load_curses() {
+    Source.fromFile("curses.txt").getLines.foreach { line =>
+      val pair = line.split(",")
+      if (pair.size == 2) {
+        curses(pair.head) = pair.last
+      }
+    }
   }
 }
 
