@@ -1,0 +1,6 @@
+OTP service that will restart a process if it dies
+Supervisor
+http://www.hccp.org/supervisors.html
+
+Documentation for building a simple OTP server
+http://joeandmotorboat.com/2008/11/12/a-simple-concurrent-erlang-tcp-server/
