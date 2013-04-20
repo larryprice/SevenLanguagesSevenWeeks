@@ -1,0 +1,8 @@
+Erlang Official Site
+http://www.erlang.org/
+
+Library Doc
+http://www.erlang.org/erldoc/
+
+OTP Doc
+http://www.erlang.org/doc/
