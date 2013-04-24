@@ -1,5 +1,7 @@
 -module(translate_service).
--export([loop/0, translate/2]).
+-behavior(supervisor).
+-export([loop/0, translate/1]).
+-export([init/1, start/0]).
 
 loop() ->
   receive
@@ -11,11 +13,21 @@ loop() ->
       loop();
     {From, _} ->
       From ! "I don't understand.",
-      loop()
+      erlang:raise(exit, "Exiting...", [])
   end.
 
-translate(To, Word) ->
-  To ! {self(), Word},
+translate(Word) ->
+  translator ! {self(), Word},
   receive
     Translation -> Translation
   end.
+
+start() ->
+  io:fwrite("Starting...~n"),
+  register(translator, spawn_link(translate_service, loop, [])),
+  {ok, whereis(translator)}.
+
+init(_) ->
+  {ok, {{one_for_one, 60, 60},
+    [{translate_service, {translate_service, start, []},
+      permanent, brutal_kill, worker, [translate_service]}]}}.
