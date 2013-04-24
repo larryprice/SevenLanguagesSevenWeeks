@@ -1,7 +1,7 @@
 -module(translate_service).
 -behavior(supervisor).
 -export([loop/0, translate/1]).
--export([init/1, start/0]).
+-export([init/1, start/0, start_translator/0]).
 
 loop() ->
   receive
@@ -31,3 +31,5 @@ init(_) ->
   {ok, {{one_for_one, 60, 60},
     [{translate_service, {translate_service, start, []},
       permanent, brutal_kill, worker, [translate_service]}]}}.
+
+start_translator() -> supervisor:start_link(doctor, []).
