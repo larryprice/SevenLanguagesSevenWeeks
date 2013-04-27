@@ -1,0 +1,1 @@
+(defn big [st n] (< n (count st)))
